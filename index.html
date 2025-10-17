@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Admin and Client Module Design</title>
+    </head>
+
+    <body>
+      <div id="root"></div>
+
+      <script>
+        // Muestra un mensaje claro si falla la carga del módulo
+        function handleModuleError() {
+          const root = document.getElementById('root');
+          if (root) {
+            root.innerHTML = '<p style="color:red">Error cargando la aplicación. Revisa la consola y que "src/main.tsx" exista.</p>';
+          }
+          console.error('Error: no se pudo cargar ./src/main.tsx. Asegura que el servidor de desarrollo está corriendo y la ruta es correcta.');
+        }
+      </script>
+
+      <!-- Usar ruta relativa (./src/main.tsx) y onerror para detectar fallos -->
+      <script type="module" src="./src/main.tsx" onerror="handleModuleError()"></script>
+    </body>
+  </html>
